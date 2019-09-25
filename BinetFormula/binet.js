@@ -41,38 +41,28 @@ function isItAFibNum(n) {
   return false;
 }
 
-function arrayify(...args) {
-  let arr = Array(10).fill(0);
-  console.log(arr);
+function arrayifyAdd(...args) {
+  //use arrays to add large numbers
+  let arr = Array(100).fill(0);
   args.forEach(arg => {
     let arrArg = arg
       .toString()
       .split('')
       .reverse();
-    console.log(arrArg);
     arrArg.forEach((subArg, index) => {
-      //console.log(index);
-      //console.log(parseInt(subArg));
-      //let carryIndex = index;
       let wholeValue = arr[index] + Number(subArg);
       arr[index] = wholeValue % 10;
       wholeValue = (wholeValue - arr[index]) / 10;
-      console.log(wholeValue);
-      //wholeValue = Math.floor(wholeValue / 10);
       while (wholeValue > 0) {
         index += 1;
         arr[index] = (wholeValue % 10) + Number(arr[index]);
         wholeValue = -(wholeValue % 10) - Number(arr[index]);
-        console.log(wholeValue);
-
-        //wholeValue = Math.floor(wholeValue / 10);
-        //index += 1;
       }
     });
   });
-  console.log(arr);
+  return Number(arr.reverse().join(''));
 }
 
 //0 1 1 2 3 5 8
 //console.log(binet(7));
-console.log(arrayify(999, 999));
+console.log(arrayifyAdd(1000999, 999, 999));
