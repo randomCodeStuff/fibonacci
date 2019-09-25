@@ -63,6 +63,12 @@ function arrayifyAdd(...args) {
   return Number(arr.reverse().join(''));
 }
 
+function arrayifyPower(power, number) {
+  //use arrays to raise a number to a power
+  let arr = Array(power).fill(number);
+  return arr.reduce((acc, curr) => acc * curr);
+}
+
 //0 1 1 2 3 5 8
 //console.log(binet(7));
-console.log(arrayifyAdd(1000999, 999, 999));
+console.log(arrayifyPower(4, 3));
